@@ -1,64 +1,3 @@
-package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"html/template"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"net/url"
-)
-
-type requete struct {
-	name         string
-	first_letter string
-}
-
-func main() {
-	// Serveur pour les fichiers statiques
-	fs := http.FileServer(http.Dir("HTML"))
-	http.Handle("/", fs)
-
-	css := http.FileServer(http.Dir("CSS"))
-	http.Handle("/CSS/", http.StripPrefix("/CSS/", css))
-
-	// Serveur pour les fichiers d'image
-	http.HandleFunc("/images/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, r.URL.Path[1:])
-	})
-
-	http.HandleFunc("HTML", page_requete)
-
-	// Démarrer le serveur
-	log.Fatal(http.ListenAndServe(":8080", nil))
-
-	//récupérer les données du formulaire
-	http.HandleFunc("/submit-form", submitFormHandler)
-	http.ListenAndServe(":8080", nil)
-}
-
-func page_requete(w http.ResponseWriter, r *http.Request) {
-	// Charger la page de contact à partir d'un fichier HTML
-	RequetePage, err := ioutil.ReadFile("HTML/requete.html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	// Écrire l'en-tête de la réponse HTTP avec le type MIME correct
-	w.Header().Set("Content-Type", "text/html")
-
-	// Écrire la page de requete dans la réponse HTTP
-	w.Write(RequetePage)
-}
-
-type Cocktail struct {
-	Name           string `json:"strDrink"`
-	Instructions   string `json:"strInstructions"`
-	ThumbnailImage string `json:"strDrinkThumb"`
-}
-
 func submitFormHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		name := r.FormValue("name")
@@ -125,29 +64,10 @@ func submitFormHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		// Affichez les résultats de la recherche
-		t, err := template.ParseFiles("templates/results.html")
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-
-		err = t.Execute(w, cocktails)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
+		// Retournez les résultats de la recherche au format JSON
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(cocktails)
+	} else {
+		http.Error(w, "La méthode n'est pas autorisée.", http.StatusMethodNotAllowed)
 	}
 }
-
-// func submitFormHandler(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method == "POST" {
-// 		name := r.FormValue("name")
-// 		ingredient := r.FormValue("ingredient")
-// 		// faire quelque chose avec les données reçues...
-// 		fmt.Fprintf(w, "Merci pour votre requête, %s ! Vous cherchez des recettes avec %s.", name, ingredient)
-// 	} else {
-// 		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
-// 	}
-
-// }
