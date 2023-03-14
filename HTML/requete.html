@@ -9,6 +9,24 @@
         <title> Page de Requête </title>
     </head>
     <body>
+        <header>
+            <img src="../images/logo.png" alt="logo" class="logo">
+            <div class = "menu">
+                <button class="bouton_menu"><a href="index.html">Page d'Accueil</a></button>
+                <button class="bouton_menu"><a href="requete.html"> Page de requête </a></button>
+            </div>
+        </header>
+        <content>
+            <form action="/submit-form" method="post">
+                <label for="name">Entrée le nom du cocktail :</label>
+                <input type="text" id="name" name="name"><br>
         
+                <label for="ingredient">Entrée le nom d'un ingredient que vous souhaitez utilisé :</label>
+                <input type="text" id="ingredient" name="ingredient"><br>
+        
+                <input type="submit" value="Envoyer">
+            </form>
+
+        </content>
     </body>
 </html>

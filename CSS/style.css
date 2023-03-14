@@ -1,57 +1,61 @@
-@media screen {
-    
+@media screen and (max-width: 560px) {
+    .logo{
+        display: none;
+    }    
+
+    .container{
+        flex-direction: column;
+    }
+
 }
 
-*{
-    overflow: scroll;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     background-color: rgb(35, 3, 18);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
-.header{
-    display: flex;
-    position: fixed;
+header{
+    position: sticky;
     top: 0;
-    width: 100vw;
-    height: 75px;
+    display: flex;
+    align-items: center;
+    height: 50px;
     background-color: rgb(29, 0, 13);
     justify-content: space-around;
-
 }
 
-.logo{
+header .logo {
     display: flex;
     float: left;
     width: 300px;
     height: 50px;
 }
 
-.menu{
+header .menu{
     display: flex;
     float: right;
     width: auto;
-    height: 75px;
     justify-content: space-between;
-}
-
-.element_menu{
-    display: flex;
-    padding: 10px;
 }
 
 .bouton_menu {
     display: flex;
-    width: 100px;
-    height: 40px;
     background-color: rgb(29, 0, 13);
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    margin: 0 10px;
+    padding: 10px;
     font-family: 'Open sans', sans-serif;
     border: none;
-    text-decoration:none;
 }
 
 a:link {
@@ -62,28 +66,58 @@ a:visited {
     color: white;
 }
 
+a:active {
+    background-color: #c52d2f;
+}
+
 .bouton_menu:hover {
     background-color: #c52d2f;
 }
 
-.séparateur{
-    display: flex;
-    width: 100%;
-    height: auto;
+content {
+    padding: 20px;
 }
 
-.gauche{
+.container {
     display: flex;
+    height: 50vh;
+    flex-direction: row;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
-    height: 90vh;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
 }
 
-.droite{
+.right {
     display: flex;
-    left: 50%;
-    height: 90vh;
     justify-content: center;
     align-items: center;
+    width: 50%;
+    height: 100%;
 }
+
+.présentation{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(29, 0, 13);
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    height: 90%;
+    width: 100%;
+}
+
+.diff_requetes{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(29, 0, 13);
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    height: 90%;
+    width: 100%;
+} 

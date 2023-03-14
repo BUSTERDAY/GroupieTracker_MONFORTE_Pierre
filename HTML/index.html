@@ -10,27 +10,27 @@
         <title> Page d'Accueil </title>
     </head>
     <body>
-        <div class="header">
-            <div class="logo">
-                <img src="../images/logo.png" alt="logo">
-            </div>
+        <header>
+            <img src="../images/logo.png" alt="logo" class="logo">
             <div class = "menu">
-                <div class="element_menu">
-                    <button class="bouton_menu"><a href="index.html">Page d'Accueil</a></button>
+                <button class="bouton_menu"><a href="index.html">Page d'Accueil</a></button>
+                <button class="bouton_menu"><a href="requete.html"> Page de requête </a></button>
+            </div>
+        </header>
+
+        <content>
+            <div class="container">
+                <div class="présentation left">
+                    <h1> Présentation de l'API </h1>
+                    <p> L'API TheCocktailDB est une API qui ressence des recettes de cocktail. Il s'agit d'une base de données contenant différentes recettes de cocktails du monde entier.</p>
                 </div>
-                <div class="element_menu">
-                    <button class="bouton_menu"><a href="requete.html"> Page de requête </a></button>
+
+                <div class="diff_requetes right">
+                    <h1> Explication des différentes requêtes possibles </h1>
+                    <p> Pour utiliser l'API, il faut utiliser l'URL suivante : https://www.thecocktaildb.com/api/json/v1/1/search.php?... </p>
                 </div>
             </div>
-        </div>
+        </content>
 
-        <div class="séparateur">
-            <div class="gauche">
-
-            </div>
-            <div class="droite">
-
-            </div>
-        </div>
     </body>
 </html>
