@@ -126,7 +126,7 @@ func submitFormHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		// Affichez les résultats de la recherche
-		t, err := template.ParseFiles("templates/results.html")
+		t, err := template.ParseFiles("HTML/resultat.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

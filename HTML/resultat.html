@@ -17,21 +17,14 @@
                 <button class="bouton_menu"><a href="requete.html"> Page de requête </a></button>
             </div>
         </header>
+
         <content>
-            <form action="/resultat.html" method="post">
-                <label for="name">Entrée le nom du cocktail :</label>
-                <input type="text" id="name" name="name"><br>
-        
-                <label for="ingredient">Entrée le nom d'un ingredient que vous souhaitez utilisé :</label>
-                <input type="text" id="ingredient" name="ingredient"><br>
-        
-                <input type="submit" value="Envoyer">
-            </form>
-
-            <div class="container_cards">
-                <!-- Les résultats seront ajoutés ici dynamiquement -->
+            <div class="container">
+                <h1>Résultats de recherche</h1>
+                <div class="container_cards"></div>
             </div>
-
+            <script src="../script.js"></script>
         </content>
+
     </body>
 </html>
