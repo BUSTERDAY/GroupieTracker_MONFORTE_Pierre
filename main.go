@@ -139,15 +139,3 @@ func submitFormHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 }
-
-// func submitFormHandler(w http.ResponseWriter, r *http.Request) {
-// 	if r.Method == "POST" {
-// 		name := r.FormValue("name")
-// 		ingredient := r.FormValue("ingredient")
-// 		// faire quelque chose avec les données reçues...
-// 		fmt.Fprintf(w, "Merci pour votre requête, %s ! Vous cherchez des recettes avec %s.", name, ingredient)
-// 	} else {
-// 		http.Error(w, "Méthode non autorisée", http.StatusMethodNotAllowed)
-// 	}
-
-// }
